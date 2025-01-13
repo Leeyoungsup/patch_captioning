@@ -337,11 +337,7 @@ transform = transforms.Compose([
         transforms.Normalize((0.485, 0.456, 0.406), 
                              (0.229, 0.224, 0.225))])
 
-test_df=pd.read_csv(params['data_path']+'dataset.csv')
-test_json_list=[]
-for i in range(len(test_df)):
-    test_json_list.append(glob(params['test_json']+'**/'+test_df['Path'][i].replace('.png','.json'))[0])
-# test_json_list=glob('../../data/synth/010.위암 병리 이미지 및 판독문 합성 데이터/1.데이터/3.Test/2.라벨링데이터/**/*.json')
+test_json_list=glob('../../data/synth/010.위암 병리 이미지 및 판독문 합성 데이터/1.데이터/3.Test/2.라벨링데이터/**/*.json')
 test_image_list=[f.replace('2.라벨링데이터', '1.원천데이터') for f in test_json_list]
 test_image_list=[f.replace('.json', '.png') for f in test_image_list]
 test_caption_list=[]
